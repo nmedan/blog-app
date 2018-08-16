@@ -1,6 +1,5 @@
 <template>
   <div>
-   <h2>Add new post</h2>
    <form @submit.prevent="onSubmit()">
       <div class="form-group row">
         <label for="title" class="col-4 col-form-label">Title</label>
@@ -54,12 +53,19 @@ export default {
     
     methods: {
         onSubmit()  {
-            this.addPost();         
+            this.$route.params.id? this.editPost() : this.addPost()  
         },
 
         addPost() {
             posts.add(this.post).then(response=>{this.$router.push
             ('/posts')}).catch(err=>console.log(err))
+        },
+
+        editPost() {
+            posts.edit(this.post)
+            .then(() => {
+            this.$router.push('/posts').catch(err=>console.log(err))
+            })
         }
     }
 }

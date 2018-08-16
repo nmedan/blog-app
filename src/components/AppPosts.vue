@@ -7,6 +7,9 @@
                 <router-link :to="{ name: 'post-details', params: { id: post.id }}">
                     Post View
                 </router-link>
+                <router-link :to="{ name: 'edit-post', params: { id: post.id }}">
+                    Edit post
+                </router-link>
             </p>           
             <hr/>
        </div>
