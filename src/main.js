@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import App from './App.vue'
 import Posts from './pages/Posts.vue'
 import PostDetails from './pages/PostDetails.vue'
+import AddPost from './pages/AddPost.vue'
 
 
 Vue.config.productionTip = false
@@ -13,6 +14,7 @@ const routes = [
   { path: '/', redirect: '/posts' },
   { path: '/posts', component: Posts, name: 'posts' },
   { path: '/post/:id', component: PostDetails, name: 'post-details' },
+  { path: '/add', component: AddPost, name: 'add-post' },
 ]
 
 const router = new VueRouter({

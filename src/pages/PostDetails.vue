@@ -3,8 +3,6 @@
         <SinglePost :post="post"/>
     </div>
 </template>
-
-
 <script>
 
 import { posts } from '../services/Posts'
