@@ -5,11 +5,12 @@
             <p>{{post.text}}</p>
             <p>{{post.createdAt}} 
                 <router-link :to="{ name: 'post-details', params: { id: post.id }}">
-                    Post View
+                   <button class="btn btn-info">Post View</button>
                 </router-link>
                 <router-link :to="{ name: 'edit-post', params: { id: post.id }}">
-                    Edit post
+                   <button class="btn btn-primary">Edit</button>
                 </router-link>
+                <button class="btn btn-danger" @click="deletePost(post.id)">Delete</button>
             </p>           
             <hr/>
        </div>
@@ -20,6 +21,16 @@
 
 import { posts } from '../services/Posts'
 export default {
-    props:['posts']
+    props:['posts'],
+    methods: { 
+       deletePost (id) {        
+          posts.delete(id)
+          .then(() => {
+          this.$emit('postDeleted', id)
+          })
+        
+      }
+
+   }
 }
 </script>

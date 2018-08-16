@@ -2,7 +2,7 @@
    <div class="container mt-4">
     <div class="row">
       <div class="col">
-        <AppPosts :posts="posts"/>
+        <AppPosts :posts="posts" @postDeleted="deletePost"/>
       </div>
     </div>
   </div>
@@ -30,6 +30,13 @@ export default {
                 vm.posts = response.data
             })
         })
+    },
+    
+    methods: {
+        deletePost(id) {
+          let index = this.posts.findIndex(post => post.id === id);
+          this.posts.splice(index, 1);
+        }    
     }
 }
 </script>
