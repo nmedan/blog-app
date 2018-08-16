@@ -22,6 +22,9 @@
         <div>
           <button name="submit" type="submit" class="btn btn-success">Submit</button>
         </div>
+        <div>
+          <button name="reset" type="reset" class="btn btn-danger">Reset</button>
+        </div>
       </div>
     </form>
    </div>
