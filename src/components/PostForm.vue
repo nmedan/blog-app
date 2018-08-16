@@ -6,7 +6,7 @@
         <label for="title" class="col-4 col-form-label">Title</label>
         <div class="col-8">
           <div class="input-group">
-            <input id="title" name="title" type="text" class="form-control here" v-model="post.title">
+            <input id="title" name="title" type="text" required="required" minlength="2" class="form-control here" v-model="post.title">
           </div>
         </div>
       </div>
@@ -14,7 +14,7 @@
         <label for="text" class="col-4 col-form-label">Text</label>
         <div class="col-8">
           <div class="input-group">
-            <input id="text" name="text" type="text" class="form-control here" v-model="post.text">
+            <input id="text" name="text" type="text" required="required" maxlength="300" class="form-control here" v-model="post.text">
           </div>
         </div>
       </div>
