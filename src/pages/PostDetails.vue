@@ -1,7 +1,7 @@
 <template>
     <div class="container mt-4">
       <SinglePost :post="post"></SinglePost>
-      <AddComment :post="post"></AddComment>
+      <AddComment :post="post" @commentCreated="setPost"></AddComment>
     </div>
 </template>
 <script>
@@ -20,13 +20,19 @@ export default {
            post: {
                title:'',
                text:'',
-
            },
         }
     },
     
     created() {
         if (this.$route.params.id) {
+          posts.get(this.$route.params.id).then(response=>
+          (this.post=response.data)).catch(err => console.log(err))
+        }
+    },
+
+    methods: {
+        setPost() {
           posts.get(this.$route.params.id).then(response=>
           (this.post=response.data)).catch(err => console.log(err))
         }

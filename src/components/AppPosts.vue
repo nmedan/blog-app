@@ -3,7 +3,7 @@
        <div v-for="(post, key) in posts" :key="key">
             <p><h4>{{ post.title }}</h4></p>
             <p>{{post.text}}</p>
-            <p>{{post.createdAt}} 
+            <p>{{post.createdAt | formatDate}} 
                 <router-link :to="{ name: 'post-details', params: { id: post.id }}">
                    <button class="btn btn-info">Post View</button>
                 </router-link>
@@ -21,8 +21,10 @@
 <script>
 
 import { posts } from '../services/Posts'
+import { mixin1 } from '../mixins/my-mixins'
 export default {
     props:['posts'],
+    mixins:[mixin1],
     methods: { 
        deletePost (id) {        
           posts.delete(id)

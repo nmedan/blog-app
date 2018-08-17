@@ -4,7 +4,7 @@
        <h4>Comments:</h4>
        <div v-for="(comment, key) in post.comments" :key="key">
          <p>{{comment.text}}</p>
-         <p>{{comment.createdAt}}</p>
+         <p>{{comment.createdAt | diffForHumans}}</p>
          <hr/>
        </div>
      </div>
@@ -32,9 +32,10 @@
 <script>
 
 import { posts } from '../services/Posts'
-
+import { mixin1 } from '../mixins/my-mixins'
 export default {
     props:['post'],
+    mixins:[mixin1],
     data() {
         return {
            comment: {
@@ -49,9 +50,10 @@ export default {
         },
 
         addComment() {          
-            posts.addComment(this.comment, this.post.id);
-            this.post = posts.get(this.post.id).then(response=>
-            (this.post=response.data));            
+            posts.addComment(this.comment, this.post.id).then(() => {
+            this.$emit('commentCreated')
+            })
+                        
         }
 
     }
