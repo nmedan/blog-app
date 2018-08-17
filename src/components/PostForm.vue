@@ -39,7 +39,7 @@ export default {
         return {
            post: {
                title:'',
-               text:''
+               text:'',
            }
         }
     },

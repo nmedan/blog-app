@@ -28,9 +28,7 @@ export default {
           .then(() => {
           this.$emit('postDeleted', id)
           })
-        
       }
-
    }
 }
 </script>

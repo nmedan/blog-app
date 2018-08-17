@@ -1,15 +1,18 @@
 <template>
-    <div >
-        <SinglePost :post="post"/>
+    <div class="container mt-4">
+      <SinglePost :post="post"></SinglePost>
+      <AddComment :post="post"></AddComment>
     </div>
 </template>
 <script>
 
 import { posts } from '../services/Posts'
 import SinglePost from '../components/SinglePost'
+import AddComment from '../components/AddComment'
 export default {
     components: {
-        SinglePost
+        SinglePost,
+        AddComment
     },
 
     data() {
@@ -17,8 +20,8 @@ export default {
            post: {
                title:'',
                text:'',
-               createdAt:''
-           }
+
+           },
         }
     },
     

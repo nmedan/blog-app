@@ -9,8 +9,10 @@ export default class Posts {
     return axios.get('posts')
   }
 
+ 
+
   get(id) {
-    return axios.get(`posts/${id}`);
+      return axios.get(`posts/${id}?filter={"include":["comments"]}`);
   }
 
   add(post) {
@@ -23,6 +25,11 @@ export default class Posts {
 
   delete(id) {
       return axios.delete(`posts/${id}`);
+  }
+
+  addComment(comment, id) {
+      console.log('add comment');
+      return axios.post(`posts/${id}/comments`, comment);
   }
 
 }
