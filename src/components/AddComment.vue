@@ -1,5 +1,7 @@
 <template>
+  
    <div>
+     
      <div class="list-group">
        <h4>Comments:</h4>
        <div v-for="(comment, key) in post.comments" :key="key">
@@ -19,6 +21,9 @@
           </div>
         </div>
       </div>
+      <div class="form-group row">
+           <vue-recaptcha @verify="verifyMethod()" sitekey="6Ld5hmoUAAAAADxQKsvb1FxrbFOXrG8ov_6DnJab"></vue-recaptcha>
+      </div>
        <div class="form-group row">
         <div>
           <button name="submit" type="submit" class="btn btn-success">Submit</button>
@@ -28,19 +33,25 @@
     </div>
    </div>
 </template>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 
 <script>
 
 import { posts } from '../services/Posts'
 import { mixin1 } from '../mixins/my-mixins'
+import VueRecaptcha from 'vue-recaptcha'
 export default {
     props:['post'],
     mixins:[mixin1],
+    components: {
+      VueRecaptcha
+    },
     data() {
         return {
            comment: {
 		        text:''
            },
+           verified:false
         }
     },
     
@@ -49,11 +60,23 @@ export default {
             this.addComment();  
         },
 
-        addComment() {          
+        addComment() {  
+          if (this.verified) {        
             posts.addComment(this.comment, this.post.id).then(() => {
             this.$emit('commentCreated')
             })
+          }
                         
+        },
+
+        verifyMethod() {
+           this.verified=true;
+           return this.verified;
+        }
+
+        expiredMethod() {
+          this.verified = false;
+          return this.verified;
         }
 
     }
