@@ -6,7 +6,7 @@ export default class Posts {
   }
 
   getAll() {
-    return axios.get('posts')
+    return axios.get('posts?filter={"include":["comments"]}')
   }
 
  

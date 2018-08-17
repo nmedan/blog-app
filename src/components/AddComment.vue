@@ -48,9 +48,10 @@ export default {
             this.addComment();  
         },
 
-        addComment() {
-            posts.addComment(this.comment, this.post.id).then(response=>{this.$router.push(`/posts/${this.post.id}/comments`)})
-            .catch(err=>console.log(err))
+        addComment() {          
+            posts.addComment(this.comment, this.post.id);
+            this.post = posts.get(this.post.id).then(response=>
+            (this.post=response.data));            
         }
 
     }

@@ -11,7 +11,8 @@
                    <button class="btn btn-primary">Edit</button>
                 </router-link>
                 <button class="btn btn-danger" @click="deletePost(post.id)">Delete</button>
-            </p>           
+            </p> 
+            <p>Comments: {{post.comments.length}}</p>          
             <hr/>
        </div>
     </div>
