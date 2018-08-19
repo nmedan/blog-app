@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="form-group row">
-           <vue-recaptcha @verify="verifyMethod()" sitekey="6Ld5hmoUAAAAADxQKsvb1FxrbFOXrG8ov_6DnJab"></vue-recaptcha>
+           <vue-recaptcha @verify="verifyMethod()" @expired="expiredMethod()" sitekey="6Ld5hmoUAAAAADxQKsvb1FxrbFOXrG8ov_6DnJab"></vue-recaptcha>
       </div>
        <div class="form-group row">
         <div>
@@ -72,7 +72,7 @@ export default {
         verifyMethod() {
            this.verified=true;
            return this.verified;
-        }
+        },
 
         expiredMethod() {
           this.verified = false;
